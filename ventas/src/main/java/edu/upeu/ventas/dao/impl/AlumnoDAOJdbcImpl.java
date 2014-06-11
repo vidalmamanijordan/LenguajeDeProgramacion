@@ -69,20 +69,56 @@ public class AlumnoDAOJdbcImpl implements AlumnoDAO {
 		return lista;
 	}
 	//Metodo para Actualizar Datos en nuestra base de Datos MySQL...
-	public void actualizar(Alumno p){
+	public void actualizar(Alumno p) {
+
 		try {
 			Connection conn = DBConexion.getConexion();
+
 			PreparedStatement ps = conn
-					.prepareStatement("Update alumno id(nombre, ape_pat, ape_mat) Values(?, ?, ?)");
+					.prepareStatement("update alumno set nombre=?,ape_pat=?,ape_mat=? where id=?");
+
+			
 			ps.setString(1, p.getNombre());
 			ps.setString(2, p.getApePat());
 			ps.setString(3, p.getApeMat());
-			
+			ps.setString(4, p.getId());
 			ps.executeUpdate();
-		} catch (Exception e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			DBConexion.exit();
 		}
+
+	}
+
+	
+	public Alumno getAlumnoPorid(String id) {
+
+		Alumno al = null;
+		try {
+			Connection conn = DBConexion.getConexion();
+
+			PreparedStatement ps = conn
+					.prepareStatement("select * from alumno where id=?");
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				al=new Alumno();
+				al.setId(rs.getString("id"));
+				al.setNombre(rs.getString("nombre"));
+				al.setApePat(rs.getString("ape_pat"));
+				al.setApeMat(rs.getString("ape_mat"));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConexion.exit();
+		}
+		// TODO Auto-generated method stub
+		return al;
 	}
 }

@@ -49,7 +49,22 @@ public class AlumnoServiceImpl implements AlumnoService {
 		persona.setApePat(p.getApePat());
 		persona.setApeMat(p.getApeMat());
 		persona.setNombre(p.getNombre());
+		persona.setId(p.getId());
 		
 		alumnoDAO.actualizar(persona);
+	}
+	
+	public AlumnoForm getAlumno(String id) {
+
+		Alumno alu = alumnoDAO.getAlumnoPorid(id);
+			
+		AlumnoForm pf = new AlumnoForm();
+		
+			pf.setId(alu.getId());
+			pf.setNombre(alu.getNombre());
+			pf.setApePat(alu.getApePat());
+			pf.setApeMat(alu.getApeMat());
+
+		return pf;
 	}
 }

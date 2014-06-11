@@ -14,7 +14,7 @@
 		<nav>
 			<ul>
 				<li onclick="upeu.cargarUrl('alumnos');">Alumnos</li>
-				<li>Docentes</li>
+				<li onclick="upeu.cargarUrl('docentes');">Docentes</li>
 				<li>Cursos</li>
 				<li>Salir</li>
 			</ul>

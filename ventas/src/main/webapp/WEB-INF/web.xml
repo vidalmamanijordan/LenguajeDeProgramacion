@@ -23,10 +23,22 @@
   	<servlet-class>edu.upeu.ventas.web.AlumnoServlet</servlet-class>
   </servlet>
   <servlet>
+  	<servlet-name>DocenteServlet</servlet-name>
+  	<display-name>DocenteServlet</display-name>
+  	<description></description>
+  	<servlet-class>edu.upeu.ventas.web.DocenteServlet</servlet-class>
+  </servlet>
+  <servlet>
   	<servlet-name>AlumnoNuevoServlet</servlet-name>
   	<display-name>AlumnoNuevoServlet</display-name>
   	<description></description>
   	<servlet-class>edu.upeu.ventas.web.AlumnoNuevoServlet</servlet-class>
+  </servlet>
+    <servlet>
+  	<servlet-name>DocenteNuevoServlet</servlet-name>
+  	<display-name>DocenteNuevoServlet</display-name>
+  	<description></description>
+  	<servlet-class>edu.upeu.ventas.web.DocenteNuevoServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>AlumnoEditarServlet</servlet-name>
@@ -46,6 +58,10 @@
   	<servlet-name>AlumnoServlet</servlet-name>
   	<url-pattern>/alumnos</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+  	<servlet-name>DocenteServlet</servlet-name>
+  	<url-pattern>/docentes</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AlumnoNuevoServlet</servlet-name>
   	<url-pattern>/alumnos/nuevo</url-pattern>
@@ -53,5 +69,9 @@
   <servlet-mapping>
   	<servlet-name>AlumnoEditarServlet</servlet-name>
   	<url-pattern>/alumnos/editar</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DocenteNuevoServlet</servlet-name>
+  	<url-pattern>/docentes/nuevo</url-pattern>
   </servlet-mapping>
 </web-app>

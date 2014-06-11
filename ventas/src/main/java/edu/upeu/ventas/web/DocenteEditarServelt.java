@@ -9,22 +9,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.upeu.ventas.service.AlumnoService;
+import edu.upeu.ventas.service.DocenteService;
 import edu.upeu.ventas.service.impl.AlumnoServiceImpl;
+import edu.upeu.ventas.service.impl.DocenteServiceImpl;
 import edu.upeu.ventas.web.form.AlumnoForm;
+import edu.upeu.ventas.web.form.DocenteForm;
 
 /**
  * Servlet implementation class AlumnoEditar
  */
-public class AlumnoEditarServlet extends HttpServlet {
+public class DocenteEditarServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String VIEW_MAIN = "/pages/alumno/main.jsp";
-	private static final String VIEW_EDIT = "/pages/alumno/editar.jsp";
+	private static final String VIEW_MAIN = "/pages/docente/main.jsp";
+	private static final String VIEW_EDIT = "/pages/docente/editar.jsp";
 	
-	AlumnoService alumnoService = new AlumnoServiceImpl();       
+	DocenteService docenService = new DocenteServiceImpl();       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AlumnoEditarServlet() {	
+    public DocenteEditarServelt() {	
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,10 +38,10 @@ public class AlumnoEditarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
-		AlumnoForm alumn = alumnoService.getAlumno(id);
+		DocenteForm docen = docenService.getDocente(id);
 		
 		
-		request.setAttribute("a", alumn);
+		request.setAttribute("a", docen);
 		request.getRequestDispatcher(VIEW_EDIT)
 		.forward(request, response);
 		
@@ -54,16 +57,16 @@ public class AlumnoEditarServlet extends HttpServlet {
 		String paterno = request.getParameter("paterno");
 		String materno = request.getParameter("materno");
 
-		AlumnoForm alumnoForm = new AlumnoForm();
+		DocenteForm docenteForm = new DocenteForm();
 		
-		alumnoForm.setId(id);
-		alumnoForm.setNombre(nombre);
-		alumnoForm.setApePat(paterno);
-		alumnoForm.setApeMat(materno);
+		docenteForm.setId(id);
+		docenteForm.setNombre(nombre);
+		docenteForm.setApePat(paterno);
+		docenteForm.setApeMat(materno);
 
-		alumnoService.editarAlumno(alumnoForm);
+		docenService.editarDocente(docenteForm);
 
-		List<AlumnoForm> lista = alumnoService.getListaAlumnos();
+		List<DocenteForm> lista = docenService.getListaDocentes();
 
 		request.setAttribute("lp", lista);
 		request.getRequestDispatcher(VIEW_MAIN).forward(request, response);

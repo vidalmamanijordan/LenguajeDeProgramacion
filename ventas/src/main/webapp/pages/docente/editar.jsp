@@ -1,8 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-<form onsubmit="upeu.guardarAlumno('alumnos/editar');return false;"
+<form onsubmit="upeu.guardarAlumno('docentes/editar');return false;"
 	id="formulario">
 	
-	<h1>Editar Alumno</h1>
+	<h1>Editar Docente</h1>
 	<p>
 		<input type="hidden" id="id" value="<c:out value="${a.id}"></c:out>">
 	</p>

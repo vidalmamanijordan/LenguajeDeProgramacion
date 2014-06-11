@@ -8,24 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.upeu.ventas.service.AlumnoService;
-import edu.upeu.ventas.service.impl.AlumnoServiceImpl;
-import edu.upeu.ventas.web.form.AlumnoForm;
+import edu.upeu.ventas.service.DocenteService;
+import edu.upeu.ventas.service.impl.DocenteServiceImpl;
+import edu.upeu.ventas.web.form.DocenteForm;
 
 /**
  * Servlet implementation class AlumnoNuevoServlet
  */
-public class AlumnoNuevoServlet extends HttpServlet {
+public class DocenteNuevoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String VIEW_MAIN = "/pages/alumno/main.jsp";
-	private static final String VIEW_FORMULARIO = "/pages/alumno/formulario.jsp";
+	private static final String VIEW_MAIN = "/pages/docente/main.jsp";
+	private static final String VIEW_NEW = "/pages/docente/nuevo.jsp";
 
-	AlumnoService alumnoService = new AlumnoServiceImpl();
+	DocenteService docenteService = new DocenteServiceImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AlumnoNuevoServlet() {
+	public DocenteNuevoServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,7 +36,7 @@ public class AlumnoNuevoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(VIEW_FORMULARIO).forward(request, response);
+		request.getRequestDispatcher(VIEW_NEW).forward(request, response);
 	}
 
 	/**
@@ -50,14 +50,15 @@ public class AlumnoNuevoServlet extends HttpServlet {
 		String paterno = request.getParameter("paterno");
 		String materno = request.getParameter("materno");
 
-		AlumnoForm alumnoForm = new AlumnoForm();
-		alumnoForm.setNombre(nombre);
-		alumnoForm.setApePat(paterno);
-		alumnoForm.setApeMat(materno);
+		DocenteForm docenteForm = new DocenteForm();
+		
+		docenteForm.setNombre(nombre);
+		docenteForm.setApePat(paterno);
+		docenteForm.setApeMat(materno);
 
-		alumnoService.guardarAlumno(alumnoForm);
+		docenteService.guardarDocente(docenteForm);
 
-		List<AlumnoForm> lista = alumnoService.getListaAlumnos();
+		List<DocenteForm> lista = docenteService.getListaDocentes();
 
 		request.setAttribute("lp", lista);
 		request.getRequestDispatcher(VIEW_MAIN).forward(request, response);
