@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-<form onsubmit="upeu.guardarAlumno('docentes/editar');return false;"
+<form onsubmit="upeu.guardarAlumno('AlumnoEditarServlet');return false;"
 	id="formulario">
 	
 	<h1>Editar Docente</h1>

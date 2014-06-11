@@ -70,7 +70,7 @@ public class AlumnoDAOJdbcImpl implements AlumnoDAO {
 	}
 	//Metodo para Actualizar Datos en nuestra base de Datos MySQL...
 	public void actualizar(Alumno p) {
-
+		System.out.print("VERRRRRRRRRRRRRRRRRRRRR"+p.getId());
 		try {
 			Connection conn = DBConexion.getConexion();
 
@@ -82,6 +82,7 @@ public class AlumnoDAOJdbcImpl implements AlumnoDAO {
 			ps.setString(2, p.getApePat());
 			ps.setString(3, p.getApeMat());
 			ps.setString(4, p.getId());
+			
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

@@ -1,4 +1,4 @@
-<form onsubmit="upeu.guardarAlumno('docentes/nuevo');return false;"
+<form onsubmit="upeu.guardarDocente('docentes/nuevo');return false;"
 	id="formulario">
 	<h1>Registro de Docente</h1>
 	<p>

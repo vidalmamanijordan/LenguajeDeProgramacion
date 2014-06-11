@@ -49,6 +49,7 @@ public class AlumnoEditarServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		alumnoService = new AlumnoServiceImpl();  
 		String id = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
 		String paterno = request.getParameter("paterno");
@@ -60,7 +61,7 @@ public class AlumnoEditarServlet extends HttpServlet {
 		alumnoForm.setNombre(nombre);
 		alumnoForm.setApePat(paterno);
 		alumnoForm.setApeMat(materno);
-
+System.out.print("Llegooooooooooooooooooooooooooooooooo:" +nombre);
 		alumnoService.editarAlumno(alumnoForm);
 
 		List<AlumnoForm> lista = alumnoService.getListaAlumnos();
